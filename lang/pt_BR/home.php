@@ -1,0 +1,51 @@
+<?php
+
+return [
+    'nav_features'    => 'Recursos',
+    'nav_docs'        => 'Documentação',
+    'nav_pricing'     => 'Preços',
+    'nav_login'       => 'Entrar',
+    'nav_register'    => 'Cadastrar',
+    'nav_dashboard'   => 'Painel',
+
+    'pill'            => 'GESTÃO DE AUDITORIA DE SEGURANÇA',
+    'hero_title_1'    => 'Veja seu risco',
+    'hero_title_2'    => 'num relance.',
+    'hero_subtitle'   => 'Registre, trie, atribua e resolva descobertas de segurança através de um ciclo completo de remediação — com controle de acesso por função embutido desde a base.',
+    'hero_cta_open'   => 'Abrir painel',
+    'hero_cta_start'  => 'Começar',
+    'hero_cta_login'  => 'Entrar',
+
+    'dash_title'      => 'Painel',
+    'dash_sub'        => 'Postura de segurança em tempo real',
+    'recent_findings' => 'Descobertas recentes',
+    'view_all'        => 'Ver todas',
+    'by_severity'     => 'Por severidade',
+    'total'           => 'Total',
+    'critical'        => 'Crítica',
+    'high'            => 'Alta',
+    'medium'          => 'Média',
+    'low'             => 'Baixa',
+
+    'cap_label'       => 'Recursos',
+    'cap_title'       => 'Feito para o modo como times de segurança trabalham',
+    'feat_1_t'        => 'Triagem de Severidade CVSS',
+    'feat_1_p'        => 'Classifique descobertas de Crítica a Informativa. Ordene e filtre por impacto para que o que é perigoso nunca fique enterrado.',
+    'feat_2_t'        => 'Ciclo de Remediação',
+    'feat_2_p'        => 'Mova descobertas por Aberta, Em Progresso, Resolvida e Risco Aceito. Histórico completo, nada perdido em planilhas.',
+    'feat_3_t'        => 'Referências CVE',
+    'feat_3_p'        => 'Vincule descobertas a identificadores CVE conhecidos e anexe notas de prova de conceito para relatórios profissionais e reproduzíveis.',
+    'feat_4_t'        => 'Acesso por Função',
+    'feat_4_p'        => 'Admins, Analistas e Visualizadores veem exatamente o que devem — aplicado nas rotas, políticas e consultas.',
+    'feat_5_t'        => 'Políticas de Propriedade',
+    'feat_5_p'        => 'Analistas editam apenas suas próprias descobertas. Proteção contra IDOR embutida para que ninguém altere dados que não são seus.',
+    'feat_6_t'        => 'Rastreamento de Alvos',
+    'feat_6_p'        => 'Associe cada descoberta à URL ou sistema afetado. Audite um app ou uma frota inteira em um único painel.',
+
+    'cta_title'       => 'Comece a rastrear em minutos.',
+    'cta_sub'         => 'Configure sua primeira auditoria e convide seu time.',
+    'cta_btn'         => 'Começar',
+
+    'foot_left'       => 'feito com Laravel + Tailwind',
+    'foot_right'      => 'um projeto de aprendizado · não para alvos em produção',
+];

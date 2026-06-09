@@ -1,0 +1,51 @@
+<?php
+
+return [
+    'nav_features'    => 'Features',
+    'nav_docs'        => 'Documentation',
+    'nav_pricing'     => 'Pricing',
+    'nav_login'       => 'Log in',
+    'nav_register'    => 'Register',
+    'nav_dashboard'   => 'Dashboard',
+
+    'pill'            => 'SECURITY AUDIT MANAGEMENT',
+    'hero_title_1'    => 'See your risk',
+    'hero_title_2'    => 'at a glance.',
+    'hero_subtitle'   => 'Log, triage, assign, and resolve security findings through a full remediation lifecycle — with role-based access control built in from the ground up.',
+    'hero_cta_open'   => 'Open dashboard',
+    'hero_cta_start'  => 'Get started',
+    'hero_cta_login'  => 'Log in',
+
+    'dash_title'      => 'Dashboard',
+    'dash_sub'        => 'Live security posture',
+    'recent_findings' => 'Recent findings',
+    'view_all'        => 'View all',
+    'by_severity'     => 'By severity',
+    'total'           => 'Total',
+    'critical'        => 'Critical',
+    'high'            => 'High',
+    'medium'          => 'Medium',
+    'low'             => 'Low',
+
+    'cap_label'       => 'Capabilities',
+    'cap_title'       => 'Built for the way security teams work',
+    'feat_1_t'        => 'CVSS Severity Triage',
+    'feat_1_p'        => 'Classify findings from Critical to Info. Sort and filter by impact so the dangerous stuff never gets buried.',
+    'feat_2_t'        => 'Remediation Lifecycle',
+    'feat_2_p'        => 'Move findings through Open, In Progress, Resolved and Accepted Risk. Full history, nothing lost in a spreadsheet.',
+    'feat_3_t'        => 'CVE References',
+    'feat_3_p'        => 'Link findings to known CVE identifiers and attach proof-of-concept notes for reproducible, professional reporting.',
+    'feat_4_t'        => 'Role-Based Access',
+    'feat_4_p'        => 'Admins, Analysts and Viewers each see exactly what they should — enforced at route, policy and query level.',
+    'feat_5_t'        => 'Ownership Policies',
+    'feat_5_p'        => 'Analysts edit only their own findings. IDOR protection baked in so nobody touches data they don\'t own.',
+    'feat_6_t'        => 'Target Tracking',
+    'feat_6_p'        => 'Tie every finding to the affected URL or system. Audit one app or an entire fleet from a single dashboard.',
+
+    'cta_title'       => 'Start tracking in minutes.',
+    'cta_sub'         => 'Set up your first audit and invite your team.',
+    'cta_btn'         => 'Get started',
+
+    'foot_left'       => 'built with Laravel + Tailwind',
+    'foot_right'      => 'a learning project · not for production targets',
+];
