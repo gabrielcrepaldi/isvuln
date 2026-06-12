@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VulnerabilityController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\NvdController;
 
 // Public
 Route::get('/', function () {
@@ -34,6 +35,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Analyst and Admin can access vulnerabilities (we'll build this next)
     Route::middleware(['role:admin|analyst'])->group(function () {
 	    Route::resource('vulnerabilities', VulnerabilityController::class);
+        Route::get('/nvd/lookup', [NvdController::class, 'lookup'])->name('nvd.lookup');
     });
 
     // Admin only

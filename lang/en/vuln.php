@@ -26,6 +26,18 @@ return [
     'assigned_to'    => 'Assigned to',
     'poc_placeholder'=> 'Steps to reproduce, payloads, etc.',
 
+    // NVD CVE lookup
+    'nvd_lookup'        => 'Lookup',
+    'nvd_looking_up'    => 'Looking up…',
+    'nvd_invalid_cve'   => 'Enter a valid CVE ID (e.g. CVE-2024-1234).',
+    'nvd_filled'        => 'Fields filled from NVD.',
+    'nvd_failed'        => 'Lookup failed.',
+    'nvd_network_error' => 'Network error — could not reach NVD.',
+    'nvd_cvss'          => 'CVSS',
+    'nvd_bad_format'    => 'Invalid CVE ID format.',
+    'nvd_api_failed'    => 'NVD API request failed.',
+    'nvd_not_found'     => 'CVE not found in NVD database.',
+
     // Severity (display only — DB keeps English)
     'severity' => [
         'critical' => 'Critical',

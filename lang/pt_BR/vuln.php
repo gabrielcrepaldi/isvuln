@@ -26,6 +26,18 @@ return [
     'assigned_to'    => 'Atribuído a',
     'poc_placeholder'=> 'Passos para reproduzir, payloads, etc.',
 
+    // Consulta de CVE na NVD
+    'nvd_lookup'        => 'Consultar',
+    'nvd_looking_up'    => 'Consultando…',
+    'nvd_invalid_cve'   => 'Informe um ID CVE válido (ex.: CVE-2024-1234).',
+    'nvd_filled'        => 'Campos preenchidos pela NVD.',
+    'nvd_failed'        => 'Consulta falhou.',
+    'nvd_network_error' => 'Erro de rede — não foi possível acessar a NVD.',
+    'nvd_cvss'          => 'CVSS',
+    'nvd_bad_format'    => 'Formato de ID CVE inválido.',
+    'nvd_api_failed'    => 'A requisição à API da NVD falhou.',
+    'nvd_not_found'     => 'CVE não encontrado na base da NVD.',
+
     // Severity (display only — DB keeps English)
     'severity' => [
         'critical' => 'Crítica',
