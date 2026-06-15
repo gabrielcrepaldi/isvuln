@@ -23,6 +23,18 @@
       .poc{background:#05080d;border:1px solid var(--line);color:var(--ok);padding:16px;border-radius:9px;font-family:'JetBrains Mono',monospace;font-size:13px;white-space:pre-wrap;margin-top:6px}
       .divider{border-top:1px solid var(--line-soft);padding-top:20px}
       .back{display:inline-block;margin-top:22px;color:var(--amber);font-size:14px}
+      .btn-scan{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:7px 14px;font-family:'Sora',sans-serif;font-weight:600;font-size:13px;cursor:pointer;margin-top:8px;transition:border-color .15s}
+      .btn-scan:hover{border-color:var(--amber)}
+      .btn-scan:disabled{opacity:.5;cursor:not-allowed}
+      .vt-panel{margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:16px}
+      .vt-verdict{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:4px 11px;border-radius:6px;margin-bottom:10px}
+      .vt-verdict.malicious{color:var(--crit);background:rgba(240,86,79,0.13)}
+      .vt-verdict.suspicious{color:var(--med);background:rgba(240,179,44,0.13)}
+      .vt-verdict.clean{color:var(--ok);background:rgba(63,230,138,0.13)}
+      .vt-stat{font-size:14px;color:var(--text);margin-top:4px}
+      .vt-meta{font-size:12px;color:var(--muted);margin-top:8px;font-family:'JetBrains Mono',monospace}
+      .vt-msg{font-size:13px;margin-top:8px}
+      .vt-msg.err{color:var(--crit)}
     </style>
     @endpush
 
@@ -48,6 +60,13 @@
             <div>
                 <div class="lbl">{{ __('vuln.f_target') }}</div>
                 <div class="val mono">{{ $vulnerability->target }}</div>
+                <button type="button" class="btn-scan" id="vt-scan-btn">{{ __('vuln.vt_scan') }}</button>
+                <div id="vt-panel" class="vt-panel" style="display:none">
+                    <span id="vt-verdict" class="vt-verdict"></span>
+                    <div id="vt-stat" class="vt-stat"></div>
+                    <div id="vt-meta" class="vt-meta"></div>
+                </div>
+                <p id="vt-msg" class="vt-msg" style="display:none"></p>
             </div>
             <div>
                 <div class="lbl">{{ __('vuln.f_cve') }}</div>
@@ -75,5 +94,65 @@
     </div>
 
     <a href="{{ route('vulnerabilities.index') }}" class="back">← {{ __('vuln.back_to_list') }}</a>
+
+    <script>
+    document.getElementById('vt-scan-btn').addEventListener('click', async function () {
+        const btn = this;
+        const panel = document.getElementById('vt-panel');
+        const msg = document.getElementById('vt-msg');
+
+        panel.style.display = 'none';
+        msg.style.display = 'none';
+        btn.disabled = true;
+        btn.textContent = @json(__('vuln.vt_scanning'));
+
+        try {
+            const res = await fetch('{{ route('vulnerabilities.scan', $vulnerability) }}', {
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            });
+            const data = await res.json();
+
+            if (!res.ok) {
+                msg.textContent = data.error ?? @json(__('vuln.vt_api_failed'));
+                msg.className = 'vt-msg err';
+                msg.style.display = 'block';
+                return;
+            }
+
+            const verdictLabels = {
+                malicious:  @json(__('vuln.vt_verdict_malicious')),
+                suspicious: @json(__('vuln.vt_verdict_suspicious')),
+                clean:      @json(__('vuln.vt_verdict_clean')),
+            };
+
+            const verdict = document.getElementById('vt-verdict');
+            verdict.textContent = verdictLabels[data.verdict] ?? data.verdict;
+            verdict.className = 'vt-verdict ' + data.verdict;
+
+            const flagged = data.malicious + data.suspicious;
+            document.getElementById('vt-stat').textContent =
+                @json(__('vuln.vt_flagged'))
+                    .replace(':count', flagged)
+                    .replace(':total', data.total);
+
+            const metaParts = [
+                @json(__('vuln.vt_reputation')) + ': ' + data.reputation,
+            ];
+            if (data.last_analysis_date) {
+                metaParts.push(@json(__('vuln.vt_last_analysis')) + ': ' + data.last_analysis_date);
+            }
+            document.getElementById('vt-meta').textContent = metaParts.join('  •  ');
+
+            panel.style.display = 'block';
+        } catch (e) {
+            msg.textContent = @json(__('vuln.vt_network_error'));
+            msg.className = 'vt-msg err';
+            msg.style.display = 'block';
+        } finally {
+            btn.disabled = false;
+            btn.textContent = @json(__('vuln.vt_scan'));
+        }
+    });
+    </script>
 
 </x-app-sidebar-layout>

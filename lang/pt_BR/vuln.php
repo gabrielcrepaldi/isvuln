@@ -38,6 +38,21 @@ return [
     'nvd_api_failed'    => 'A requisição à API da NVD falhou.',
     'nvd_not_found'     => 'CVE não encontrado na base da NVD.',
 
+    // Verificação de URL no VirusTotal
+    'vt_scan'              => 'Verificar Alvo',
+    'vt_scanning'          => 'Verificando…',
+    'vt_verdict_malicious' => 'Malicioso',
+    'vt_verdict_suspicious'=> 'Suspeito',
+    'vt_verdict_clean'     => 'Limpo',
+    'vt_flagged'           => ':count / :total mecanismos sinalizaram esta URL',
+    'vt_reputation'        => 'Reputação',
+    'vt_last_analysis'     => 'Última análise',
+    'vt_no_target'         => 'Esta descoberta não possui URL de alvo para verificar.',
+    'vt_not_analyzed'      => 'Esta URL ainda não foi analisada pelo VirusTotal.',
+    'vt_api_failed'        => 'A requisição ao VirusTotal falhou.',
+    'vt_no_key'            => 'A chave de API do VirusTotal não está configurada.',
+    'vt_network_error'     => 'Erro de rede — não foi possível acessar o VirusTotal.',
+
     // Severity (display only — DB keeps English)
     'severity' => [
         'critical' => 'Crítica',

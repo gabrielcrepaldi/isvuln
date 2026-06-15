@@ -6,6 +6,7 @@ use App\Http\Controllers\VulnerabilityController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NvdController;
+use App\Http\Controllers\VirusTotalController;
 
 // Public
 Route::get('/', function () {
@@ -36,6 +37,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware(['role:admin|analyst'])->group(function () {
 	    Route::resource('vulnerabilities', VulnerabilityController::class);
         Route::get('/nvd/lookup', [NvdController::class, 'lookup'])->name('nvd.lookup');
+        Route::get('/vulnerabilities/{vulnerability}/scan', [VirusTotalController::class, 'scan'])->name('vulnerabilities.scan');
     });
 
     // Admin only

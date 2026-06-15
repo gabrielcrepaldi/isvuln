@@ -38,6 +38,21 @@ return [
     'nvd_api_failed'    => 'NVD API request failed.',
     'nvd_not_found'     => 'CVE not found in NVD database.',
 
+    // VirusTotal URL scan
+    'vt_scan'              => 'Scan Target',
+    'vt_scanning'          => 'Scanning…',
+    'vt_verdict_malicious' => 'Malicious',
+    'vt_verdict_suspicious'=> 'Suspicious',
+    'vt_verdict_clean'     => 'Clean',
+    'vt_flagged'           => ':count / :total engines flagged this URL',
+    'vt_reputation'        => 'Reputation',
+    'vt_last_analysis'     => 'Last analysis',
+    'vt_no_target'         => 'This finding has no target URL to scan.',
+    'vt_not_analyzed'      => 'This URL has not been analyzed by VirusTotal yet.',
+    'vt_api_failed'        => 'VirusTotal request failed.',
+    'vt_no_key'            => 'VirusTotal API key is not configured.',
+    'vt_network_error'     => 'Network error — could not reach VirusTotal.',
+
     // Severity (display only — DB keeps English)
     'severity' => [
         'critical' => 'Critical',
