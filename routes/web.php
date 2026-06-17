@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NvdController;
 use App\Http\Controllers\VirusTotalController;
+use App\Http\Controllers\EvidenceFileController;
 
 // Public
 Route::get('/', function () {
@@ -37,7 +38,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware(['role:admin|analyst'])->group(function () {
 	    Route::resource('vulnerabilities', VulnerabilityController::class);
         Route::get('/nvd/lookup', [NvdController::class, 'lookup'])->name('nvd.lookup');
-        Route::get('/vulnerabilities/{vulnerability}/scan', [VirusTotalController::class, 'scan'])->name('vulnerabilities.scan');
+	    Route::get('/vulnerabilities/{vulnerability}/scan', [VirusTotalController::class, 'scan'])->name('vulnerabilities.scan');
+	    Route::post('vulnerabilities/{vulnerability}/evidence', [EvidenceFileController::class, 'store'])->name('evidence.store');
+	    Route::delete('evidence/{evidenceFile}', [EvidenceFileController::class, 'destroy'])->name('evidence.destroy');
+    });
+
+    // Evidence download — admin, analyst and viewer; per-record access is
+    // still enforced by the policy check inside the controller.
+    Route::middleware(['role:admin|analyst|viewer'])->group(function () {
+        Route::get('evidence/{evidenceFile}/download', [EvidenceFileController::class, 'download'])->name('evidence.download');
     });
 
     // Admin only

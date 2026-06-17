@@ -155,4 +155,28 @@
     });
     </script>
 
+
+@can('update', $vulnerability)
+<div style="max-width:820px;margin-top:24px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px">
+    <div class="lbl" style="margin-bottom:14px">Evidence Files</div>
+
+    <form action="{{ route('evidence.store', $vulnerability) }}" method="POST" enctype="multipart/form-data" style="display:flex;gap:10px;margin-bottom:18px">
+        @csrf
+        <input type="file" name="evidence" required
+               style="flex:1;background:var(--bg);border:1px solid var(--line);border-radius:9px;color:var(--text);padding:9px 12px;font-size:13px">
+        <button type="submit" class="btn-amber">Upload</button>
+    </form>
+
+    @foreach($vulnerability->evidenceFiles as $ev)
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line-soft);font-size:13px">
+            <a href="{{ route('evidence.download', $ev) }}" style="flex:1;color:var(--low)" class="mono">{{ $ev->original_name }}</a>
+            <span class="mono" style="color:var(--muted-2)">{{ number_format($ev->size / 1024, 1) }} KB</span>
+            <form action="{{ route('evidence.destroy', $ev) }}" method="POST" style="display:inline">
+                @csrf @method('DELETE')
+                <button type="submit" style="background:none;border:none;color:var(--crit);cursor:pointer;font-size:13px">Delete</button>
+            </form>
+        </div>
+    @endforeach
+</div>
+@endcan
 </x-app-sidebar-layout>
