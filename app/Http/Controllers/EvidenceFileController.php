@@ -33,8 +33,15 @@ class EvidenceFileController extends Controller
         $this->authorize('update', $vulnerability);
 
         // Fix 3: restrict by extension (client) AND server-detected MIME.
+        // Every failure shows one generic message except an over-size upload,
+        // which gets a specific message explaining the limit.
         $request->validate([
             'evidence' => 'required|file|max:20480|mimes:jpg,jpeg,png,gif,pdf,txt,log,csv,docx,zip,pcap',
+        ], [
+            'evidence.max'      => __('vuln.ev_error_size'),
+            'evidence.required' => __('vuln.ev_error'),
+            'evidence.file'     => __('vuln.ev_error'),
+            'evidence.mimes'    => __('vuln.ev_error'),
         ]);
 
         $file = $request->file('evidence');
@@ -43,7 +50,7 @@ class EvidenceFileController extends Controller
         $mimeType = $file->getMimeType();
 
         if (! in_array($mimeType, self::ALLOWED_MIME_TYPES, true)) {
-            return back()->withErrors(['evidence' => 'File type not permitted.']);
+            return back()->withErrors(['evidence' => __('vuln.ev_error')]);
         }
 
         // Fix 2: never use the client filename for storage; randomize it.
@@ -66,7 +73,7 @@ class EvidenceFileController extends Controller
             'size'             => $size,
         ]);
 
-        return back()->with('success', 'Evidence uploaded.');
+        return back()->with('success', __('vuln.ev_uploaded'));
     }
 
     /**
@@ -98,6 +105,6 @@ class EvidenceFileController extends Controller
 
         $evidenceFile->delete();
 
-        return back()->with('success', 'Evidence deleted.');
+        return back()->with('success', __('vuln.ev_deleted'));
     }
 }

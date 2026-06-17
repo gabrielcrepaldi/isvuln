@@ -157,15 +157,29 @@
 
 
 @can('update', $vulnerability)
+@push('head')
+<style>
+  .ev-file::file-selector-button{
+    background:var(--amber);color:#1a1200;font-family:'Sora',sans-serif;font-weight:600;
+    font-size:13px;border:none;border-radius:7px;padding:7px 14px;margin-right:12px;cursor:pointer;
+    transition:background .15s;
+  }
+  .ev-file::file-selector-button:hover{background:var(--amber-2)}
+</style>
+@endpush
 <div style="max-width:820px;margin-top:24px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px">
-    <div class="lbl" style="margin-bottom:14px">Evidence Files</div>
+    <div class="lbl" style="margin-bottom:14px">{{ __('vuln.ev_heading') }}</div>
 
     <form action="{{ route('evidence.store', $vulnerability) }}" method="POST" enctype="multipart/form-data" style="display:flex;gap:10px;margin-bottom:18px">
         @csrf
-        <input type="file" name="evidence" required
+        <input type="file" name="evidence" required class="ev-file"
                style="flex:1;background:var(--bg);border:1px solid var(--line);border-radius:9px;color:var(--text);padding:9px 12px;font-size:13px">
-        <button type="submit" class="btn-amber">Upload</button>
+        <button type="submit" class="btn-amber">{{ __('vuln.ev_upload') }}</button>
     </form>
+
+    @error('evidence')
+        <p style="color:var(--crit);font-size:13px;margin-top:-8px;margin-bottom:18px">{{ $message }}</p>
+    @enderror
 
     @foreach($vulnerability->evidenceFiles as $ev)
         <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line-soft);font-size:13px">
@@ -173,7 +187,7 @@
             <span class="mono" style="color:var(--muted-2)">{{ number_format($ev->size / 1024, 1) }} KB</span>
             <form action="{{ route('evidence.destroy', $ev) }}" method="POST" style="display:inline">
                 @csrf @method('DELETE')
-                <button type="submit" style="background:none;border:none;color:var(--crit);cursor:pointer;font-size:13px">Delete</button>
+                <button type="submit" style="background:none;border:none;color:var(--crit);cursor:pointer;font-size:13px">{{ __('vuln.ev_delete') }}</button>
             </form>
         </div>
     @endforeach

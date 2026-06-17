@@ -53,6 +53,15 @@ return [
     'vt_no_key'            => 'VirusTotal API key is not configured.',
     'vt_network_error'     => 'Network error — could not reach VirusTotal.',
 
+    // Evidence files
+    'ev_heading'    => 'Evidence Files',
+    'ev_upload'     => 'Upload',
+    'ev_delete'     => 'Delete',
+    'ev_uploaded'   => 'Evidence uploaded.',
+    'ev_deleted'    => 'Evidence deleted.',
+    'ev_error'      => 'The file could not be uploaded. Please choose a valid, permitted file.',
+    'ev_error_size' => 'The file is too large. The maximum allowed size is 20 MB.',
+
     // Severity (display only — DB keeps English)
     'severity' => [
         'critical' => 'Critical',

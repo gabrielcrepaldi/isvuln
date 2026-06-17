@@ -53,6 +53,15 @@ return [
     'vt_no_key'            => 'A chave de API do VirusTotal não está configurada.',
     'vt_network_error'     => 'Erro de rede — não foi possível acessar o VirusTotal.',
 
+    // Arquivos de evidência
+    'ev_heading'    => 'Arquivos de Evidência',
+    'ev_upload'     => 'Enviar',
+    'ev_delete'     => 'Excluir',
+    'ev_uploaded'   => 'Evidência enviada.',
+    'ev_deleted'    => 'Evidência excluída.',
+    'ev_error'      => 'Não foi possível enviar o arquivo. Escolha um arquivo válido e permitido.',
+    'ev_error_size' => 'O arquivo é muito grande. O tamanho máximo permitido é 20 MB.',
+
     // Severity (display only — DB keeps English)
     'severity' => [
         'critical' => 'Crítica',
