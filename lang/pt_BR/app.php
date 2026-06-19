@@ -6,6 +6,7 @@ return [
     'dashboard'       => 'Painel',
     'vulnerabilities' => 'Vulnerabilidades',
     'users'           => 'Usuários',
+    'audit_log'       => 'Log de Auditoria',
 
     // Top bar
     'logout'          => 'Sair',

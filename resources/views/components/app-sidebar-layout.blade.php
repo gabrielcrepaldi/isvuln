@@ -85,6 +85,9 @@
       <a href="{{ route('users.index') }}" class="sb-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
         <span class="ic">◉</span> {{ __('app.users') }}
       </a>
+      <a href="{{ route('audit.index') }}" class="sb-item {{ request()->routeIs('audit.*') ? 'active' : '' }}">
+        <span class="ic">≡</span> {{ __('app.audit_log') }}
+      </a>
     @endrole
   </nav>
   <div class="sb-user">

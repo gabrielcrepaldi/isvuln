@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NvdController;
 use App\Http\Controllers\VirusTotalController;
 use App\Http\Controllers\EvidenceFileController;
+use App\Http\Controllers\AuditLogController;
 
 // Public
 Route::get('/', function () {
@@ -52,6 +53,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Admin only
     Route::middleware(['role:admin'])->group(function () {
         Route::resource('users', UserController::class);
+
+        // Audit log — read-only, append-only. Index route only.
+        Route::get('/audit', [AuditLogController::class, 'index'])->name('audit.index');
     });
 
 });

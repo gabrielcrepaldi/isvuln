@@ -6,6 +6,7 @@ return [
     'dashboard'       => 'Dashboard',
     'vulnerabilities' => 'Vulnerabilities',
     'users'           => 'Users',
+    'audit_log'       => 'Audit Log',
 
     // Top bar
     'logout'          => 'Log out',
