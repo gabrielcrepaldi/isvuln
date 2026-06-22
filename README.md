@@ -29,7 +29,7 @@ Built as a hands-on learning project bridging full-stack web development and cyb
 - Append-only audit trail capturing every create, update, and delete across audited models, plus authentication events (login, logout, failed login)
 - Records the full before/after diff of changed fields, actor, IP address, and user agent
 - Tamper-resistant by design: application-level append-only enforcement, combined with database-level revocation of `UPDATE`/`DELETE` privileges on the audit table — verified to hold even against direct database access
-- Full design rationale and threat model documented in [`docs/audit-logging.md`](docs/audit-logging.md)
+- Full design rationale and threat model documented in [`docs/audit-logging.md`]
 
 ### Secure File Uploads
 - Evidence files stored outside the web root with randomized filenames
